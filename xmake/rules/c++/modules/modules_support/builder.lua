@@ -237,6 +237,8 @@ function _builder(target)
     if builder == nil then
         if target:has_tool("cxx", "clang", "clangxx") then
             builder = import("clang.builder", {anonymous = true})
+        elseif target:has_tool("cxx", "emcc") then
+            builder = import("emcc.builder", {anonymous = true})
         elseif target:has_tool("cxx", "gcc", "gxx") then
             builder = import("gcc.builder", {anonymous = true})
         elseif target:has_tool("cxx", "cl") then

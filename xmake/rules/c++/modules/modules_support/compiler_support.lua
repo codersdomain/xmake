@@ -31,6 +31,8 @@ function _compiler_support(target)
     if compiler_support == nil then
         if target:has_tool("cxx", "clang", "clangxx") then
             compiler_support = import("clang.compiler_support", {anonymous = true})
+        elseif target:has_tool("cxx", "emcc") then
+            compiler_support = import("emcc.compiler_support", {anonymous = true})
         elseif target:has_tool("cxx", "gcc", "gxx") then
             compiler_support = import("gcc.compiler_support", {anonymous = true})
         elseif target:has_tool("cxx", "cl") then

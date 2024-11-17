@@ -33,6 +33,8 @@ function _dependency_scanner(target)
     if dependency_scanner == nil then
         if target:has_tool("cxx", "clang", "clangxx") then
             dependency_scanner = import("clang.dependency_scanner", {anonymous = true})
+        elseif target:has_tool("cxx", "emcc") then
+            dependency_scanner = import("emcc.dependency_scanner", {anonymous = true})
         elseif target:has_tool("cxx", "gcc", "gxx") then
             dependency_scanner = import("gcc.dependency_scanner", {anonymous = true})
         elseif target:has_tool("cxx", "cl") then
