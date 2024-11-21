@@ -47,7 +47,7 @@ function generate_dependency_for(target, sourcefile, opt)
             -- See https://clang.llvm.org/docs/StandardCPlusPlusModules.html#possible-issues-failed-to-find-system-headers
             local clang_path = compinst:program()
             if not path.is_absolute(clang_path) then
-                clang_path = compiler_support.get_clang_path(target) or compinst:program()
+                clang_path = compiler_support.get_emcc_path(target) or compinst:program()
             end
             local clangscandeps = compiler_support.get_clang_scan_deps(target)
             local dependency_flags = table.join({"--format=p1689", "--",
